@@ -1,5 +1,6 @@
 package me.banker.tv
 
+import org.bukkit.entity.TextDisplay
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
 
@@ -7,6 +8,7 @@ class Tv : JavaPlugin() {
     override fun onEnable() {
         // Plugin startup logic
         getCommand("display")?.setExecutor(DisplayCommand(this))
+        getCommand("clearDisplay")?.setExecutor(ClearDisplayCommand())
 
         // Create the images folder if it doesn't exist
         val imagesFolder = File(dataFolder, "images")
@@ -16,6 +18,9 @@ class Tv : JavaPlugin() {
     }
 
     override fun onDisable() {
-        // Plugin shutdown logic
+        // delete all TextDisplay entities
+        server.worlds.forEach { world ->
+            world.entities.filterIsInstance<TextDisplay>().forEach { it.remove() }
+        }
     }
 }

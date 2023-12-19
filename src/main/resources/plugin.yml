@@ -8,3 +8,7 @@ commands:
         description: display
         usage: /<command> [args]
         aliases: [tv]
+  clearDisplay:
+        description: clearDisplay
+        usage: /<command> [args]
+        aliases: [tv]
