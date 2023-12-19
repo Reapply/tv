@@ -1,6 +1,6 @@
 # Tv Plugin
 
-This is a Minecraft plugin developed for Bukkit servers. It allows players to display images in the game using the `/display` command.
+Made by banker0445 with help from 1sthitman
 
 ## Features
 
@@ -8,12 +8,18 @@ This is a Minecraft plugin developed for Bukkit servers. It allows players to di
 - The image is read from a PNG file in the plugin's data folder.
 - The `/display on <filename>` command displays the image.
 - The `/display off` command removes the displayed image.
+- Tab completion for the 'on' and 'off' commands and for the names of PNG files in the images folder.
+
+## Note
+
+- The GIF file format is not supported. (i plan to add support for it in the future
 
 ## Installation
 
 1. Build the plugin using Maven.
 2. Copy the generated JAR file to your server's `plugins` folder.
 3. Restart the server or load the plugin using a plugin manager.
+4. Put your PNG images in the `plugins/Tv/images` folder.
 
 ## Usage
 
