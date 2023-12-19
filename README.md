@@ -1,4 +1,4 @@
-# Tv Plugin
+# Display Plugin
 
 Made by banker0445 with help from 1sthitman
 
