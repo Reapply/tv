@@ -4,6 +4,7 @@ import org.bukkit.Color
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
+import org.bukkit.command.TabCompleter
 import org.bukkit.entity.Player
 import org.bukkit.entity.TextDisplay
 import java.awt.Image
@@ -12,10 +13,7 @@ import java.io.File
 import java.util.*
 import javax.imageio.ImageIO
 
-/**
- * The DisplayCommand class is responsible for handling the display command.
- */
-class DisplayCommand(private val plugin: Tv) : CommandExecutor {
+class DisplayCommand(private val plugin: Tv) : CommandExecutor, TabCompleter {
     private var textDisplays: List<TextDisplay>? = null
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
@@ -40,6 +38,25 @@ class DisplayCommand(private val plugin: Tv) : CommandExecutor {
         }
 
         return false
+    }
+
+    override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<String>): MutableList<String> {
+        val completions = mutableListOf<String>()
+
+        if (args.size == 2) {
+            val imagesFolder = File(plugin.dataFolder, "images")
+            val files = imagesFolder.listFiles()
+
+            if (files != null) {
+                for (file in files) {
+                    if (file.extension == "png") {
+                        completions.add(file.nameWithoutExtension)
+                    }
+                }
+            }
+        }
+
+        return completions
     }
 
     private fun handleOnCommand(sender: Player, filename: String) {
