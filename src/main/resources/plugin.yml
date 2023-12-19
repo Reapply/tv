@@ -1,0 +1,10 @@
+name: tv
+version: '${project.version}'
+main: me.banker.tv.Tv
+api-version: '1.20'
+
+commands:
+  display:
+        description: display
+        usage: /<command> [args]
+        aliases: [tv]
