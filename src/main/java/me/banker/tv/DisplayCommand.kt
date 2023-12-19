@@ -43,14 +43,20 @@ class DisplayCommand(private val plugin: Tv) : CommandExecutor, TabCompleter {
     override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<String>): MutableList<String> {
         val completions = mutableListOf<String>()
 
-        if (args.size == 2) {
-            val imagesFolder = File(plugin.dataFolder, "images")
-            val files = imagesFolder.listFiles()
+        when (args.size) {
+            1 -> {
+                completions.add("on")
+                completions.add("off")
+            }
+            2 -> {
+                val imagesFolder = File(plugin.dataFolder, "images")
+                val files = imagesFolder.listFiles()
 
-            if (files != null) {
-                for (file in files) {
-                    if (file.extension == "png") {
-                        completions.add(file.nameWithoutExtension)
+                if (files != null) {
+                    for (file in files) {
+                        if (file.extension == "png") {
+                            completions.add(file.nameWithoutExtension)
+                        }
                     }
                 }
             }
@@ -58,7 +64,6 @@ class DisplayCommand(private val plugin: Tv) : CommandExecutor, TabCompleter {
 
         return completions
     }
-
     private fun handleOnCommand(sender: Player, filename: String) {
         val file = File(plugin.dataFolder, "images/$filename.png")
 
