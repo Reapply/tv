@@ -1,5 +1,7 @@
 package me.banker.tv
 
+import me.banker.tv.commands.ClearDisplayCommand
+import me.banker.tv.commands.DisplayCommand
 import org.bukkit.entity.TextDisplay
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File

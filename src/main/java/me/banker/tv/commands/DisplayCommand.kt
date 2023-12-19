@@ -1,5 +1,6 @@
-package me.banker.tv
+package me.banker.tv.commands
 
+import me.banker.tv.Tv
 import org.bukkit.Color
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
