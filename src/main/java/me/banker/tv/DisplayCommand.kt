@@ -56,7 +56,7 @@ class DisplayCommand(private val plugin: Tv) : CommandExecutor {
                     var image: BufferedImage = ImageIO.read(file)
 
                     // Scale down the image to 100x100
-                    val scaledImage = image.getScaledInstance(100, 100, Image.SCALE_DEFAULT)
+                    val scaledImage = image.getScaledInstance(150, 100, Image.SCALE_DEFAULT)
                     image = BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB)
                     image.graphics.drawImage(scaledImage, 0, 0, null)
 
